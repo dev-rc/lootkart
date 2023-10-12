@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Product Categories</h1>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{% static 'images/category1.jpg' %}" class="card-img-top" alt="Category 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Category 1</h5>
+                        <p class="card-text">Description for Category 1.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more category cards as needed -->
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{% static 'images/product1.jpg' %}" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">Description for Product 1.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more featured product cards as needed -->
+        </div>
+    </div>
+{% endblock %}
