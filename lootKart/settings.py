@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'loot_Kart_API',
     'accounts',
     'Products',
+    'User_Profile',
     'home',
 ]
 

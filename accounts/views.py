@@ -1,10 +1,8 @@
 # accounts/views.py
-from telnetlib import LOGOUT
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import CustomUserForm, LoginForm
-from .models import Profile
-from .forms import ProfileForm
+
 
 
 
@@ -42,22 +40,22 @@ def login_user(request):
     return render(request, 'accounts/login/login.html', {'form': form})
 
 
-def view_profile(request):
-    profile = Profile.objects.get(user=request.user)
-    return render(request, 'profile/view_profile.html', {'profile': profile})
+# def view_profile(request):
+#     profile = Profile.objects.get(user=request.user)
+#     return render(request, 'profile/view_profile.html', {'profile': profile})
 
-def edit_profile(request):
-    profile = Profile.objects.get(user=request.user)
+# def edit_profile(request):
+#     profile = Profile.objects.get(user=request.user)
     
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            return redirect('view_profile')
-    else:
-        form = ProfileForm(instance=profile)
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, request.FILES, instance=profile)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('view_profile')
+#     else:
+#         form = ProfileForm(instance=profile)
 
-    return render(request, 'profile/edit_profile.html', {'form': form})
+#     return render(request, 'profile/edit_profile.html', {'form': form})
 
 def logout_view(request):
     logout(request)
