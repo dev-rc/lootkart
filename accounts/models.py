@@ -9,7 +9,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     """
     Custom user model extending AbstractBaseUser and PermissionsMixin.
     """
-
+    id = models.BigAutoField(primary_key=True)
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
