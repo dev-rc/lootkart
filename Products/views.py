@@ -9,7 +9,8 @@ def get_product_list(request):
 
 
 def search_products(request):
-    query = request.GET.get("q", "")
+    query = request.GET.get("q","")
+ 
     products = Product.objects.filter(name__icontains=query)[:10]
     product_names = [product.name for product in products]
 
@@ -20,6 +21,17 @@ def search_products(request):
         return redirect("products:product_details", pk=exact_match.pk)
 
     return JsonResponse(product_names, safe=False)
+
+def product_search(request):
+    product_name = request.GET.get('product')
+    search_results = []
+
+    if product_name:
+        # Perform the search if a product_name is provided
+        search_results = Product.objects.filter(name__icontains=product_name)
+
+    return render(request, 'products/search_results.html', {'products': search_results, 'search_query': product_name})
+
 
 
 def product_details(request, product_name, product_id):
