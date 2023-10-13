@@ -25,13 +25,13 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 from django import forms
-from .models import Profile
+# from .models import Profile
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['bio', 'avatar']
+# class ProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ['bio', 'avatar']
 
-        widgets = {
-            'bio': forms.Textarea(attrs={'cols': 80, 'rows': 5}),
-        }
+#         widgets = {
+#             'bio': forms.Textarea(attrs={'cols': 80, 'rows': 5}),
+#         }
