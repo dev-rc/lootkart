@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from django.shortcuts import render
 from .models import Product
-def suggest_products_name(request):
-    products = Product.objects.values_list('name', flat=True)
-    return render(request, 'base.html', {'products': list(products)})
+from django.http import JsonResponse
 
-def product_list(request):
+
+def get_product_list(request):
     products = Product.objects.all()
     return render(request, 'products/products.html', {'products': products})
 
-
+def search_products(request):
+    query = request.GET.get('q', '')
+    products = Product.objects.filter(name__icontains=query)[:10]  # Adjust as needed
+    product_names = [product.name for product in products]
+    return JsonResponse(product_names, safe=False)
